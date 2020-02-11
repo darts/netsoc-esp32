@@ -1,6 +1,6 @@
-#define NET_ID "NET_ID"
-#define PWD "PWD"
-#define SRC_URL "http://192.168.0.59:8080/"
+#define NET_ID "esp32"
+#define PWD "netsoc"
+#define SRC_URL "http://192.168.0.1:8080/"
 #define deviceID "pick-A-Name"
 
 #define rButtonPin 35
