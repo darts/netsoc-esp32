@@ -1,5 +1,4 @@
 #define NET_ID "esp32"
-#define PWD "netsoc"
 #define SRC_URL "http://192.168.0.1:8080/"
 #define deviceID "pick-A-Name"
 
@@ -85,7 +84,7 @@ void setup() {
 
     Serial.begin(115200);
     
-    wifiMulti.addAP(NET_ID, PWD);
+    wifiMulti.addAP(NET_ID);
 
     urlBase.concat("sendText");
     urlBase.concat("?");
