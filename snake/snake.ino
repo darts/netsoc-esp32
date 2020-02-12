@@ -7,6 +7,7 @@ TFT_eSPI tft = TFT_eSPI();
 #define BODY_DIST 10 //distance between body blocks
 #define CUBE_SIZE 8 
 #define TGT_SIZE 8
+#define DIFFICULTY 50
 
 #define snakeBodyColour 0xD687
 #define snakeHeadColour 0x3BF7
@@ -27,6 +28,8 @@ int curLength = startLength;
 const int maxLength = 100; //maximum number of blocks
 int xLocArr[maxLength];
 int yLocArr[maxLength];
+
+int speedModifier = 0;
 
 int score = 0;
 
@@ -133,11 +136,11 @@ void directionUpdate(int dirIn){
 
 void death(){
   #if DEBUGGING
-    Serial.print("RIPerino... - Score:"); 
+    Serial.print("RIPerino... - Score:  "); 
     Serial.println(score);
-  #endif DEBUGGING
+  #endif 
   tft.setTextColor(deathColour);
-  String resStr = "R.I.P - Score:";
+  String resStr = "R.I.P - Score:  ";
   String scoreStr = String(score);
   resStr.concat(scoreStr);
 tft.drawCentreString(resStr, 110, 30, 2);
@@ -188,7 +191,7 @@ void spawnTgt(){
         Serial.print(tgtX);
         Serial.print("  y="); 
         Serial.println(tgtY);
-      #endif DEBUGGING
+      #endif
       activeTgt = true;
       return;
     }
@@ -228,6 +231,7 @@ void addSnakeBody(){
     xLocArr[i] = xLocArr[i-1];
     yLocArr[i] = yLocArr[i-1];
   }
+  speedModifier++;
   #if DEBUGGING
   printSnake();
   #endif
@@ -261,6 +265,7 @@ void setup() {
    resetLocs();
    drawSnake();
    delay(DELAY_TIME * 3);
+   speedModifier = 0;
 }
 
 void loop() {
@@ -271,6 +276,6 @@ void loop() {
   checkBounds();
   tgtCollideSnake();
   
-  delay(DELAY_TIME);
+  delay(DELAY_TIME - (speedModifier*DIFFICULTY));
 
 }
