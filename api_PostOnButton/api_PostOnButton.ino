@@ -107,12 +107,11 @@ void setup() {
 void loop() {
     // wait for WiFi connection
     if((wifiMulti.run() == WL_CONNECTED)) {
+        tft.fillScreen(0);
         handleButton();
     }else{
       tft.fillScreen(0);
       tft.setCursor(0, 40);
       tft.print("NO NETWORK CONNECTION");
     }
-
-//    delay(5000);
 }
