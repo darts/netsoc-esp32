@@ -4,10 +4,8 @@
 #include <WebServer.h>
 
 #define NET_ID "esp32"
-#define PWD "netsoc"
 
 const char* ssid     = NET_ID;
-const char* password = PWD;
 
 WebServer server(80);
 
@@ -49,7 +47,7 @@ void handleNotFound() {
 void setup(void) {
   Serial.begin(115200);
   WiFi.mode(WIFI_STA);
-  WiFi.begin(ssid, password);
+  WiFi.begin(ssid);
   Serial.println("");
 
   tft.begin();

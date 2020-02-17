@@ -1,5 +1,4 @@
 #define NET_ID "esp32"
-#define PWD "netsoc"
 #define SRC_URL "http://192.168.0.1:8080/"
 #define deviceID "pick-A-Name"
 
