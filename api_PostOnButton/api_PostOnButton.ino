@@ -85,7 +85,7 @@ void setup() {
 
     Serial.begin(115200);
     
-    wifiMulti.addAP(NET_ID, PWD);
+    wifiMulti.addAP(NET_ID);
 
     urlBase.concat("sendText");
     urlBase.concat("?");
@@ -107,7 +107,7 @@ void setup() {
 void loop() {
     // wait for WiFi connection
     if((wifiMulti.run() == WL_CONNECTED)) {
-        tft.fillScreen(0);
+//        tft.fillScreen(0);
         handleButton();
     }else{
       tft.fillScreen(0);
